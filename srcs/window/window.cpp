@@ -25,11 +25,14 @@ Window::Window(const std::string& windowName, int windowHeight, int windowWidth)
 	glEnable(GL_DEPTH_TEST);
 }
 
-Window::~Window()= default;
+Window::~Window(){
+	// glfwDestroyWindow(_window);
+};
 
 
 bool Window::shouldLoop(){
 	if (glfwWindowShouldClose(_window)){
+		glfwDestroyWindow(_window);
 		glfwTerminate();
 		return false;
 	}
@@ -46,7 +49,7 @@ void Window::clear(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 }
 
-void Window::swapBufferAndPollPvent(){
+void Window::swapBufferAndPollEvent(){
 	glfwSwapBuffers(_window);
 	glfwPollEvents();
 }

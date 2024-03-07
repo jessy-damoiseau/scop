@@ -13,7 +13,7 @@ class Window {
 
 		bool shouldLoop();
 		void clear();
-		void swapBufferAndPollPvent();
+		void swapBufferAndPollEvent();
 		[[nodiscard]] GLFWwindow * getWindow() const;
 
 	private:
